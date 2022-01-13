@@ -1,0 +1,17 @@
+div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: double darkgray;
+  height: 700px;
+}
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*border: dotted darkgray;*/
+  /*border: double #FFDB84;*/
+  border: double darkgray;
+  min-height: 50px;
+  font-family: "Fira Code Medium", monospace;
+}
