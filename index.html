@@ -59,7 +59,7 @@
             this.load.image('enemy', 'https://examples.phaser.io/assets/demoscene/ball-tlb.png')
         }
 
-        let player, platforms, stars, enemies
+        let player, platforms, stars, enemies, floors
         let cursors
         let score = 0
         let GAME_WIN = false
@@ -150,13 +150,12 @@
             // platforms.create(770, 250, 'platform')
             // platforms.getChildren().forEach(c => c.setScale(0.3, 0.1).setOrigin(0).refreshBody())
 
-            // platforms = this.physics.add.staticGroup({
-            //     key: 'platform',
-            //     setScale: { x: 0.3, y: 0.1},
-            //     repeat: 16,
-            //     setXY: { x: Phaser.Math.FloatBetween(770, 200), y: Phaser.Math.FloatBetween(50,
-            //             100), }
-            // })
+            floors = this.physics.add.staticGroup({
+                key: 'platform',
+                setScale: { x: 0.3, y: 0.1},
+                repeat: 80,
+                setXY: { x: 0, y: 590, stepX: 40}
+            })
 
             platforms = this.physics.add.staticGroup()
             for(let i = 0; i < platformsCounter; i++){
