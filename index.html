@@ -207,7 +207,9 @@
 
         function update() {
             if (!GAME_OVER && !GAME_WIN) time ++
-            if (time%500 === 0) {
+            if (time%500 === 0) addPlatforms(15)
+            if (time%2000 === 0) removePlatforms()
+            if (score === level*100) {
                 nextLevel()
             }
             gameOverText.setX(player.body.x)
@@ -277,8 +279,9 @@
 
         function nextLevel () {
             level++
-            if (starsCounter < 60) addStars(5)
-            if (score%20 === 0) addEnemies(1)
+            console.log(level)
+            if (starsCounter < 100) addStars(10)
+            if (score%200 === 0) addEnemies(1)
         }
 
         function addStars (count) {
@@ -304,6 +307,27 @@
             }
             enemiesCounter += count
         }
+        function addPlatforms (count) {
+            for (let i = 0; i < count; i++) {
+                let newPlatform = platforms.create(Phaser.Math.FloatBetween(150, 2900), Phaser.Math.FloatBetween(80, 450),
+                    'platform')
+                newPlatform.setScale(0.3, 0.1).setOrigin(0).refreshBody()
+            }
+            platformsCounter += count
+        }
+
+        function removePlatforms () {
+            platforms.getChildren().forEach(platform => {
+                console.log('aaaaaaa')
+                if (Phaser.Math.FloatBetween(1, 1000)%9) {
+                    platform.visible = false
+                    platforms.remove(platform)
+                    platformsCounter--
+                    console.log('usunieto ' + platformsCounter)
+                }
+            })
+        }
+
 
     </script>
 </div>
